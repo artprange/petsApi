@@ -1,6 +1,8 @@
 import express from "express";
+import router from "./routes/index.js";
 const app = express();
 app.use(express.json());
+router(app);
 app.get("/", (_, res) => {
     res.send("Bem vindo");
 });
