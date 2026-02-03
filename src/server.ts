@@ -1,7 +1,8 @@
-import app from "./app.js";
+import 'reflect-metadata';
+import app from './app.js';
 
-const PORTA = 3000;
+const PORT = 3000;
 
-app.listen(PORTA, () => {
-  console.log(`Servidor executando em http://localhost:${PORTA}`);
+app.listen(PORT, () => {
+	console.log(`Server running on port http://localhost:${PORT}`);
 });
