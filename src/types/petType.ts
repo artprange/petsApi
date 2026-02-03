@@ -8,7 +8,7 @@ type PetType = {
     name: string;
     species: ANIMAL_SPECIES_ENUM;
     adopted: boolean;
-    age: number
+    dob: string
 }
 
 export type { PetType}
