@@ -11,4 +11,5 @@ type PetType = {
     age: number
 }
 
-export type { PetType, ANIMAL_SPECIES_ENUM  }
+export type { PetType}
+export default ANIMAL_SPECIES_ENUM

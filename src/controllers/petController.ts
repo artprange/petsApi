@@ -1,18 +1,23 @@
 import { Request, Response } from 'express';
-import { PetType } from '../types/petType.js';
+import ANIMAL_SPECIES_ENUM, { PetType } from '../types/petType.js';
+
 
 let petList: PetType[] = [];
 
 export default class PetController {
 	generatePet(req: Request, res: Response) {
 		const { id, adopted, species, age, name } = <PetType>req.body;
+		if(!Object.values(ANIMAL_SPECIES_ENUM).includes(species)){
+			return res.status(400).json({error: 'Species not allowed'})
+		}
+	
 		const newPet: PetType = { id, adopted, species, age, name };
 		petList.push(newPet);
 		return res.status(201).json(newPet);
 	}
 
 	listPets(req: Request, res: Response) {
-		return res.status(200).json(this.listPets);
+		return res.status(200).json(petList);
 	}
 
 	updatePet(req: Request, res: Response) {
