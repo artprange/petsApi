@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
-import ANIMAL_SPECIES_ENUM, { PetType } from '../types/petType.js';
+import { ANIMAL_SPECIES_ENUM, PetType } from '../types/petType.js';
+import PetRepository from '../repos/interfaces/PetRepository.js';
+import PetEntity from '../entities/petEntity.js';
 
 let petList: PetType[] = [];
 
@@ -10,11 +12,12 @@ function getId() {
 }
 
 export default class PetController {
+	constructor(private repositoty: PetRepository) {}
 	generatePet(req: Request, res: Response) {
-		const body = req.body as Partial<Omit<PetType, 'id'>>;
+		const body = req.body as Partial<Omit<PetEntity, 'id'>>;
 		const errors: string[] = [];
 
-		const requiredFields: (keyof Omit<PetType, 'id'>)[] = [
+		const requiredFields: (keyof Omit<PetEntity, 'id'>)[] = [
 			'name',
 			'species',
 			'adopted',
@@ -77,15 +80,13 @@ export default class PetController {
 				.json({ error: 'Validation failed', details: errors });
 		}
 
-		const newPet: PetType = {
-			id: getId(),
-			name: body.name!.trim(),
-			species: body.species!,
-			adopted: body.adopted!,
-			dob: body.dob!.trim(),
-		};
-
-		petList.push(newPet);
+		const newPet = new PetEntity();
+		((newPet.id = getId()),
+			(newPet.name = body.name!.trim()),
+			(newPet.species = body.species!),
+			(newPet.adopted = body.adopted!),
+			(newPet.dob = body.dob!.trim()),
+			this.repositoty.generatePet(newPet));
 		return res.status(201).json(newPet);
 	}
 
@@ -124,3 +125,5 @@ export default class PetController {
 		return res.status(200).json({ message: 'Pet successfully deleted' });
 	}
 }
+
+// TODO - check why 'adopted' is not being sent!

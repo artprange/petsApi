@@ -1,4 +1,5 @@
-import ANIMAL_SPECIES_ENUM from '../types/petType.js';
+import { ANIMAL_SPECIES_ENUM } from '../types/petType.js';
+import PetEntity from '../entities/petEntity.js';
 let petList = [];
 let id = 0;
 function getId() {
@@ -6,6 +7,10 @@ function getId() {
     return id;
 }
 export default class PetController {
+    repositoty;
+    constructor(repositoty) {
+        this.repositoty = repositoty;
+    }
     generatePet(req, res) {
         const body = req.body;
         const errors = [];
@@ -58,14 +63,13 @@ export default class PetController {
                 .status(400)
                 .json({ error: 'Validation failed', details: errors });
         }
-        const newPet = {
-            id: getId(),
-            name: body.name.trim(),
-            species: body.species,
-            adopted: body.adopted,
-            dob: body.dob.trim(),
-        };
-        petList.push(newPet);
+        const newPet = new PetEntity();
+        ((newPet.id = getId()),
+            (newPet.name = body.name.trim()),
+            (newPet.species = body.species),
+            (newPet.adopted = body.adopted),
+            (newPet.dob = body.dob.trim()),
+            this.repositoty.generatePet(newPet));
         return res.status(201).json(newPet);
     }
     listPets(req, res) {
