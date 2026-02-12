@@ -95,22 +95,22 @@ export default class PetController {
 		return res.status(200).json(petList)
 	}
 
-	updatePet(req: Request, res: Response) {
+	async updatePet(req: Request, res: Response) {
 		const id = Number(req.params.id);
-		const { adopted, species, dob, name } = req.body as Partial<PetType>;
+		const { success, message} = await this.repositoty.updatePet(
+			Number(id),
+			req.body as PetEntity
+		);
 
 		const pet = petList.find((pet) => pet.id === id);
 
 		if (!pet) {
-			return res.status(404).json({ error: 'No Pets were found' });
+			return res.status(404).json({ message });
 		}
 
-		if (adopted !== undefined) pet.adopted = adopted;
-		if (species !== undefined) pet.species = species;
-		if (dob !== undefined) pet.dob = dob;
-		if (name !== undefined) pet.name = name;
+		
 
-		return res.status(200).json(pet);
+		return res.sendStatus(204)
 	}
 
 	deletePet(req: Request, res: Response) {

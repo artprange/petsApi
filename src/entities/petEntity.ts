@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { ANIMAL_SPECIES_ENUM } from '../types/petType.js';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { ANIMAL_SPECIES_ENUM } from '../types/petType.js'
 
 @Entity()
 export default class PetEntity {

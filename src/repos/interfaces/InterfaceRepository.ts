@@ -1,4 +1,4 @@
-import PetEntity from '../../entities/petEntity.js';
+import PetEntity from '../../entities/petEntity.js'
 
 export default interface InterfacePetRepository {
 	generatePet(pet: PetEntity): void;

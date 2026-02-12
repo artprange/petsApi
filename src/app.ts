@@ -1,6 +1,6 @@
-import express, { Response } from 'express';
-import router from './routes/index.js';
-import { AppDataSource } from './config/dataSource.js';
+import express, { Response } from 'express'
+import router from './routes/index.js'
+import { AppDataSource } from './config/dataSource.js'
 // import "reflect-metadata"
 
 const app = express();
