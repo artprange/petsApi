@@ -6,8 +6,8 @@ export default class PetRepository {
     generatePet(pet) {
         this.repository.save(pet);
     }
-    listPets() {
-        throw new Error('Method not implemented.');
+    async listPets() {
+        return this.repository.find();
     }
     updatePet(id, pet) {
         throw new Error('Method not implemented.');

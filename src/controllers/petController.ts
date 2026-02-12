@@ -90,8 +90,9 @@ export default class PetController {
 		return res.status(201).json(newPet);
 	}
 
-	listPets(req: Request, res: Response) {
-		return res.status(200).json(petList);
+	async listPets(req: Request, res: Response) {
+		const petList = await this.repositoty.listPets()
+		return res.status(200).json(petList)
 	}
 
 	updatePet(req: Request, res: Response) {

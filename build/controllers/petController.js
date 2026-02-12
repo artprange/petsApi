@@ -72,7 +72,8 @@ export default class PetController {
             this.repositoty.generatePet(newPet));
         return res.status(201).json(newPet);
     }
-    listPets(req, res) {
+    async listPets(req, res) {
+        const petList = await this.repositoty.listPets();
         return res.status(200).json(petList);
     }
     updatePet(req, res) {
@@ -103,3 +104,4 @@ export default class PetController {
         return res.status(200).json({ message: 'Pet successfully deleted' });
     }
 }
+// TODO - check why 'adopted' is not being sent!
