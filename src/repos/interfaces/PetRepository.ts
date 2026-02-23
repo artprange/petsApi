@@ -45,5 +45,3 @@ export default class PetRepository implements InterfacePetRepository {
 }
 
 
-
-//todo - check async on generatePet()

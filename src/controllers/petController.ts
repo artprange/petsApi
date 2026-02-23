@@ -12,7 +12,7 @@ function getId() {
 }
 
 export default class PetController {
-	constructor(private repositoty: PetRepository) {}
+	constructor(private repositoty: PetRepository) { }
 	generatePet(req: Request, res: Response) {
 		const body = req.body as Partial<Omit<PetEntity, 'id'>>;
 		const errors: string[] = [];
@@ -97,7 +97,7 @@ export default class PetController {
 
 	async updatePet(req: Request, res: Response) {
 		const id = Number(req.params.id);
-		const { success, message} = await this.repositoty.updatePet(
+		const { success, message } = await this.repositoty.updatePet(
 			Number(id),
 			req.body as PetEntity
 		);
@@ -108,7 +108,7 @@ export default class PetController {
 			return res.status(404).json({ message });
 		}
 
-		
+
 
 		return res.sendStatus(204)
 	}
@@ -127,4 +127,4 @@ export default class PetController {
 	}
 }
 
-// TODO - check why 'adopted' is not being sent!
+

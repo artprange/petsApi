@@ -76,22 +76,14 @@ export default class PetController {
         const petList = await this.repositoty.listPets();
         return res.status(200).json(petList);
     }
-    updatePet(req, res) {
+    async updatePet(req, res) {
         const id = Number(req.params.id);
-        const { adopted, species, dob, name } = req.body;
+        const { success, message } = await this.repositoty.updatePet(Number(id), req.body);
         const pet = petList.find((pet) => pet.id === id);
         if (!pet) {
-            return res.status(404).json({ error: 'No Pets were found' });
+            return res.status(404).json({ message });
         }
-        if (adopted !== undefined)
-            pet.adopted = adopted;
-        if (species !== undefined)
-            pet.species = species;
-        if (dob !== undefined)
-            pet.dob = dob;
-        if (name !== undefined)
-            pet.name = name;
-        return res.status(200).json(pet);
+        return res.sendStatus(204);
     }
     deletePet(req, res) {
         const id = Number(req.params.id);
@@ -104,4 +96,3 @@ export default class PetController {
         return res.status(200).json({ message: 'Pet successfully deleted' });
     }
 }
-// TODO - check why 'adopted' is not being sent!
