@@ -1,6 +1,7 @@
-import { Repository } from "typeorm";
-import type InterfaceAdopterRepository from "./InterfaceAdopterRepository.js";
+import type { Repository } from "typeorm";
+import InterfaceAdopterRepository from "./InterfaceAdopterRepository.js";
 import AdopterEntity from "../../entities/adopterEntity.js";
+
 
 export default class AdopterRepository implements InterfaceAdopterRepository {
     constructor(private repository: Repository<AdopterEntity>) { }

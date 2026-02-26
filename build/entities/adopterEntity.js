@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Column, Entity, PrimaryGeneratedColumn, } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 let AdopterEntity = class AdopterEntity {
     id;
     name;
@@ -15,12 +15,8 @@ let AdopterEntity = class AdopterEntity {
     mobile;
     picture;
     address;
-    constructor(name, password, mobile, picture, address) {
-        this.name = name;
-        this.password = password;
-        this.picture = picture;
-        this.mobile = mobile;
-        this.address = address;
+    constructor(partial) {
+        Object.assign(this, partial);
     }
 };
 __decorate([
@@ -28,27 +24,27 @@ __decorate([
     __metadata("design:type", Number)
 ], AdopterEntity.prototype, "id", void 0);
 __decorate([
-    Column(),
+    Column("text"),
     __metadata("design:type", String)
 ], AdopterEntity.prototype, "name", void 0);
 __decorate([
-    Column(),
+    Column("text"),
     __metadata("design:type", String)
 ], AdopterEntity.prototype, "password", void 0);
 __decorate([
-    Column(),
+    Column("text"),
     __metadata("design:type", String)
 ], AdopterEntity.prototype, "mobile", void 0);
 __decorate([
-    Column(),
-    __metadata("design:type", String)
+    Column("text", { nullable: true }),
+    __metadata("design:type", Object)
 ], AdopterEntity.prototype, "picture", void 0);
 __decorate([
-    Column(),
-    __metadata("design:type", String)
+    Column("text", { nullable: true }),
+    __metadata("design:type", Object)
 ], AdopterEntity.prototype, "address", void 0);
 AdopterEntity = __decorate([
     Entity(),
-    __metadata("design:paramtypes", [String, String, String, String, String])
+    __metadata("design:paramtypes", [Object])
 ], AdopterEntity);
 export default AdopterEntity;

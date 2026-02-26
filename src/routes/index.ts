@@ -1,14 +1,11 @@
-import express from "express";
-import petRouter from "../routes/petRouter.js"
-import adopterRouter from "../routes/adopterRouter.js"
+import type { Express } from "express";
+import petRouter from "./petRouter.js";
+import adopterRouter from "./adopterRouter.js";
 
-const router = (app: express.Router) => {
-    app.use("/pets", petRouter)
+export default function router(app: Express) {
+    app.use("/pets", petRouter);
     app.use("/adopter", adopterRouter);
 }
-
-export default router
-
 
 
 //TO DO - create ENUM for ROUTES
