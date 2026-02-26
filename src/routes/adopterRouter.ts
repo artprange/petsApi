@@ -1,21 +1,22 @@
-import { Router } from "express";
+import express from "express";
 import AdoptionController from "../controllers/adopterController.js";
 import { AppDataSource } from "../config/dataSource.js";
 import AdopterEntity from "../entities/adopterEntity.js";
 import AdopterRepository from "../repos/interfaces/AdopterRepository.js";
 
-
-const router = Router();
+const router = express.Router();
 
 const typeormRepo = AppDataSource.getRepository(AdopterEntity);
 const adopterRepository = new AdopterRepository(typeormRepo);
-const adoptionController = new AdoptionController(adopterRepository);
+const controller = new AdoptionController(adopterRepository);
 
-// POST /adopter
-router.post("/", adoptionController.generateAdopter.bind(adoptionController));
+router.post("/", controller.generateAdopter.bind(controller));
+router.get("/", controller.listAdopters.bind(controller));
+router.get("/:id", controller.getAdopter.bind(controller));
+router.put("/:id", controller.updateAdopter.bind(controller));
+router.delete("/:id", controller.deleteAdopter.bind(controller));
 
 export default router;
-
 
 //const adopterController = new AdopterController(adopterRepository)
 //router.pot('/', (req,res) => adopterController.generateAdopter(req, res))
