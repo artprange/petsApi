@@ -18,5 +18,5 @@ router.delete("/:id", controller.deleteAdopter.bind(controller));
 
 export default router;
 
-//const adopterController = new AdopterController(adopterRepository)
-//router.pot('/', (req,res) => adopterController.generateAdopter(req, res))
+
+

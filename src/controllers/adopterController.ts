@@ -13,7 +13,7 @@ function toSafe(adopter: AdopterEntity) {
 export default class AdoptionController {
     constructor(private repository: InterfaceAdopterRepository) { }
 
-    // POST /adopter
+
     async generateAdopter(req: Request, res: Response) {
         try {
             const { name, mobile, address, picture, password } = req.body as CreateAdopterDTO;
@@ -38,7 +38,7 @@ export default class AdoptionController {
         }
     }
 
-    // GET /adopter
+
     async listAdopters(_req: Request, res: Response) {
         try {
             const list = await this.repository.listAdopters();
@@ -49,7 +49,7 @@ export default class AdoptionController {
         }
     }
 
-    // GET /adopter/:id
+
     async getAdopter(req: Request, res: Response) {
         try {
             const id = Number(req.params.id);
@@ -65,7 +65,7 @@ export default class AdoptionController {
         }
     }
 
-    // PUT /adopter/:id
+
     async updateAdopter(req: Request, res: Response) {
         try {
             const id = Number(req.params.id);
@@ -99,7 +99,7 @@ export default class AdoptionController {
         }
     }
 
-    // DELETE /adopter/:id
+
     async deleteAdopter(req: Request, res: Response) {
         try {
             const id = Number(req.params.id);
