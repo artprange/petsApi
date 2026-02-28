@@ -1,7 +1,7 @@
 import express from "express";
 import AdoptionController from "../controllers/adopterController.js";
 import { AppDataSource } from "../config/dataSource.js";
-import AdopterEntity from "../entities/adopterEntity.js";
+import AdopterEntity from "../adressEntity.ts/adopterEntity.js";
 import AdopterRepository from "../repos/interfaces/AdopterRepository.js";
 
 const router = express.Router();

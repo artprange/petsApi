@@ -1,8 +1,9 @@
 import type { Request, Response } from "express";
-import AdopterEntity from "../entities/adopterEntity.js";
+
 import type InterfaceAdopterRepository from "../repos/interfaces/InterfaceAdopterRepository.js";
 import type { CreateAdopterDTO } from "../dtos/CreateAdopterDTO.js";
 import { UpdateAdopterDTO } from "../dtos/UpdateDopterDTO.js";
+import AdopterEntity from "../entities/adopterEntity.js";
 
 
 function toSafe(adopter: AdopterEntity) {

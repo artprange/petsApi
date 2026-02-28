@@ -1,24 +1,28 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+    Column,
+    Entity,
+    JoinColumn,
+    OneToOne,
+    PrimaryGeneratedColumn,
+} from 'typeorm';
+import AddressEntity from './adressEntity.js';
 
 @Entity()
 export default class AdopterEntity {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @Column("text")
+    @Column('text')
     name!: string;
-
-    @Column("text")
+    @Column('text')
     password!: string;
-
-    @Column("text")
+    @Column('text')
     mobile!: string;
-
-    @Column("text", { nullable: true })
+    @Column('text', { nullable: true })
     picture!: string | null;
-
-    @Column("text", { nullable: true })
-    address!: string | null;
+    @OneToOne(() => AddressEntity, { nullable: true, cascade: true, eager: true })
+    @JoinColumn()
+    address?: AddressEntity
 
     constructor(partial?: Partial<AdopterEntity>) {
         Object.assign(this, partial);
