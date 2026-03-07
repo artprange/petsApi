@@ -3,5 +3,8 @@ export type CreateAdopterDTO = {
     password: string;
     mobile: string;
     picture?: string;
-    address?: string;
+    address?: {
+        city: string;
+        state: string;
+    };
 };

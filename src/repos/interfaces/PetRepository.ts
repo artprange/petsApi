@@ -1,6 +1,7 @@
 import { Repository } from 'typeorm'
-import PetEntity from '../../adressEntity.ts/petEntity.js'
+
 import InterfacePetRepository from './InterfaceRepository.js'
+import PetEntity from '../../entities/petEntity.js';
 
 export default class PetRepository implements InterfacePetRepository {
 	private repository: Repository<PetEntity>;

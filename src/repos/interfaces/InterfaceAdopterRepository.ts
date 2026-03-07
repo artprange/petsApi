@@ -1,4 +1,5 @@
-import type AdopterEntity from "../../adressEntity.ts/adopterEntity.js";
+import AdopterEntity from "../../entities/adopterEntity.js";
+
 
 export default interface InterfaceAdopterRepository {
     generateAdopter(adopter: AdopterEntity): Promise<AdopterEntity>;

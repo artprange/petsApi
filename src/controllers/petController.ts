@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import { ANIMAL_SPECIES_ENUM, PetType } from '../types/petType.js';
 import PetRepository from '../repos/interfaces/PetRepository.js';
-import PetEntity from '../adressEntity.ts/petEntity.js';
+import PetEntity from '../entities/petEntity.js';
+
 
 let petList: PetType[] = [];
 

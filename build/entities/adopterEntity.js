@@ -7,7 +7,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, } from "typeorm";
+import AddressEntity from "./adressEntity.js";
 let AdopterEntity = class AdopterEntity {
     id;
     name;
@@ -40,7 +41,8 @@ __decorate([
     __metadata("design:type", Object)
 ], AdopterEntity.prototype, "picture", void 0);
 __decorate([
-    Column("text", { nullable: true }),
+    OneToOne(() => AddressEntity, { nullable: true, cascade: true, eager: true }),
+    JoinColumn(),
     __metadata("design:type", Object)
 ], AdopterEntity.prototype, "address", void 0);
 AdopterEntity = __decorate([

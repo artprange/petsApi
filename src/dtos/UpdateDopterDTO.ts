@@ -3,5 +3,5 @@ export type UpdateAdopterDTO = {
     password?: string;
     mobile?: string;
     picture?: string | null;
-    address?: string | null;
+    address?: { city: string; state: string } | null;
 };
